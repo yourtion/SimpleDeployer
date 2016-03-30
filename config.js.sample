@@ -1,0 +1,17 @@
+'use strict';
+
+const path = require('path');
+let config = module.exports;
+
+config.port = 3000;
+config.tasks = [];
+
+config.tasks.push({
+  name: 'updateWeb',
+  command: 'cd /path/to/website && git pull'
+});
+
+config.tasks.push({
+  name: 'updateBlog',
+  command: 'cd /path/to/blog && git pull && pm2 restart Blog'
+});
