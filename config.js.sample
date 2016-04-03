@@ -1,13 +1,14 @@
 'use strict';
 
 const path = require('path');
-let config = module.exports;
+const config = module.exports;
 
 config.port = 3000;
 config.tasks = [];
 
 config.tasks.push({
   name: 'updateWeb',
+  token: 'xxxxxxx',
   command: 'cd /path/to/website && git pull'
 });
 

@@ -14,7 +14,12 @@ function register(task) {
 
   app.post('/'+task.name, function (req, res) {
 
-    console.log(`Run :${task.name} - ${task.command}`);
+    console.log(`Run :${task.name} - ${task.command} - ${task.token}`);
+
+    if(req.params.token && req.params.token !== task.token) {
+      debug.(`Token error: ${req.params.token} !== ${task.token}`);
+      return res.end('Token Error!');
+    }
 
     exec(task.command,function(err, stdout, stderr){
       console.log(`stderr: ${stderr}`);

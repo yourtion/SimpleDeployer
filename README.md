@@ -30,6 +30,7 @@ config.tasks.push({
 
 - `name` Git webhook 请求的路径；
 - `command` Git webhook 请求时执行的命令；
+- `token` 请求时需要简单验证的参数；
 
 ### 启动项目
 
@@ -49,9 +50,9 @@ pm2 start index -n SimpleDeployer
 
 在 Git 管理系统的 WebHook 界面添加 `Push` 触发事件。URL 设置为 `http(s)://SimpleDeployerServer/{task:name}`
 
-> 假设 SimpleDeployer 部署在 `server.com:8000`，task.name 为 `updateWeb`
+> 假设 SimpleDeployer 部署在 `server.com:8000`，task.name 为 `updateWeb`，task.token 为 `8K0TMEAF73`
 >
-> 那么 webhook 就是 `http://server.com:8000/updateWeb`
+> 那么 webhook 就是 `http://server.com:8000/updateWeb?token=8K0TMEAF73`
 > 
 > `Trigger` 为 `Push events`
 
