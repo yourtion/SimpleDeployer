@@ -4,7 +4,7 @@
   "description": "A simple deployer base on Node.js . Easy deploy using git webhook",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint && export NODE_ENV=test && mocha",
+    "test": "export NODE_ENV=test && mocha",
     "dev": "export DEBUG=\"SimpeDeployer:*\" && node index",
     "lint": "eslint . --fix"
   },
