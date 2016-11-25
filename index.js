@@ -16,7 +16,7 @@ function register(task) {
 
     console.log(`Run :${ task.name } - ${ task.command } - ${ task.token }`);
 
-    if(req.params.token && req.params.token !== task.token) {
+    if(!req.params.token || req.params.token !== task.token) {
       debug(`Token error: ${ req.params.token } !== ${ task.token }`);
       return res.end('Token Error!');
     }
