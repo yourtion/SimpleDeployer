@@ -1,9 +1,13 @@
 'use strict';
 
 const express = require('express');
-const config = require('./config');
 const exec = require('child_process').exec;
 const debug = require('debug')('SimpeDeployer:');
+let cfg = './config';
+if(process.env.NODE_ENV === 'test') {
+  cfg = './config.test.js';
+}
+const config = require(cfg);
 
 const app = express();
 const tasks = config.tasks;
@@ -39,3 +43,5 @@ const server = app.listen(port, function () {
   const port = server.address().port;
   console.log('UpdateService listening at http://%s:%s', host, port);
 });
+
+module.exports = app;
