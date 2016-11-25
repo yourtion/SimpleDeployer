@@ -1,5 +1,7 @@
 # SimpleDeployer
 
+[![Build Status](https://travis-ci.org/yourtion/SimpleDeployer.svg?branch=master)](https://travis-ci.org/yourtion/SimpleDeployer)
+
 基于 Git WebHook 的超简单部署工具。
 
 ## 使用
