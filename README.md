@@ -24,13 +24,13 @@ cp config.js.sample config.js
 config.port = 3000;
 
 // 添加任务
-config.tasks.push({
-  name: 'updateWeb',
+config.tasks['updateWeb'] = {
+  token: 'ssss'
   command: 'cd /path/to/website && git pull'
 });
 ```
 
-- `name` Git webhook 请求的路径；
+- `tasks['name']` Git webhook 请求的路径；
 - `command` Git webhook 请求时执行的命令；
 - `token` 请求时需要简单验证的参数；
 
@@ -57,4 +57,3 @@ pm2 start index -n SimpleDeployer
 > 那么 webhook 就是 `http://server.com:8000/updateWeb?token=8K0TMEAF73`
 > 
 > `Trigger` 为 `Push events`
-

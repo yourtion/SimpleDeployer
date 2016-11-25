@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/yourtion/SimpleDeployer#readme",
   "dependencies": {
-    "debug": "^2.2.0",
     "express": "^4.13.4"
   },
   "devDependencies": {

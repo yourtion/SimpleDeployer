@@ -1,18 +1,17 @@
 'use strict';
 
-const path = require('path');
 const config = module.exports;
 
 config.port = 3000;
-config.tasks = [];
+config.tasks = {};
 
-config.tasks.push({
-  name: 'updateWeb',
+config.tasks['updateWeb'] = {
   token: 'xxxxxxx',
   command: 'cd /path/to/website && git pull'
-});
+};
 
-config.tasks.push({
-  name: 'updateBlog',
+config.tasks['updateBlog'] = {
+  token: 'xxxxxxx',
   command: 'cd /path/to/blog && git pull && pm2 restart Blog'
-});
+};
+

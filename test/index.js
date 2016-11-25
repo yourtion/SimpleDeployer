@@ -15,7 +15,31 @@ describe('Update server', function () {
     });
   });
 
-  it('Token Error!', (done) => {
+  it('Task Error', (done) => {
+    request.post(url + 't', (err, res, body) => {
+      res.statusCode.should.equal(200);
+      body.should.equal('Task Error!');
+      done(err);
+    });
+  });
+
+  it('Task Error - 2', (done) => {
+    request.post(url + 'test1', (err, res, body) => {
+      res.statusCode.should.equal(200);
+      body.should.equal('Task Error!');
+      done(err);
+    });
+  });
+
+  it('Succeed no token', (done) => {
+    request.post(url + 'test0', (err, res, body) => {
+      res.statusCode.should.equal(200);
+      body.should.equal('Done!');
+      done(err);
+    });
+  });
+
+  it('Token Error', (done) => {
     request.post(url + 'test', (err, res, body) => {
       res.statusCode.should.equal(200);
       body.should.equal('Token Error!');
@@ -23,7 +47,7 @@ describe('Update server', function () {
     });
   });
 
-  it('Token Error!', (done) => {
+  it('Success !', (done) => {
     request.post(url + 'test?token=HRPUNDCJ1S', (err, res, body) => {
       res.statusCode.should.equal(200);
       body.should.equal('Done!');
