@@ -1,6 +1,6 @@
 {
   "name": "simple_deployer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A simple deployer base on Node.js . Easy deploy using git webhook",
   "main": "index.js",
   "scripts": {
@@ -21,9 +21,6 @@
     "url": "https://github.com/yourtion/SimpleDeployer/issues"
   },
   "homepage": "https://github.com/yourtion/SimpleDeployer#readme",
-  "dependencies": {
-    "express": "^4.13.4"
-  },
   "devDependencies": {
     "eslint": "^3.8.1",
     "eslint-config-guo": "^0.1.0",

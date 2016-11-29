@@ -11,7 +11,6 @@
 ```bash
 clone https://github.com/yourtion/SimpleDeployer.git 
 cd SimpleDeployer
-npm install
 cp config.js.sample config.js
 ```
 
