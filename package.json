@@ -24,7 +24,7 @@
   "homepage": "https://github.com/yourtion/SimpleDeployer#readme",
   "devDependencies": {
     "eslint": "^3.8.1",
-    "eslint-config-guo": "^0.1.0",
+    "eslint-config-guo": "^0.2.0",
     "mocha": "^3.2.0",
     "request": "^2.79.0",
     "should": "^11.1.1"
