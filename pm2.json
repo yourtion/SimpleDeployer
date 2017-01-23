@@ -1,0 +1,6 @@
+{
+  "name": "SimpleDeployer",
+  "script": "index.js",
+  "merge_logs": true,
+  "log_date_format": "MM-DD HH:mm:ss"
+}

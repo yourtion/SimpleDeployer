@@ -44,7 +44,7 @@ node index
 pm2：
 
 ```
-pm2 start index -n SimpleDeployer
+npm run pm2
 ```
 
 ### 设置 WebHook
