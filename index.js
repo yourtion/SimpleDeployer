@@ -24,14 +24,14 @@ http.createServer((req, res) => {
   if(!task) return res.end('Task Error!');
   if(task.token) {
     if(!request.query.token || request.query.token !== task.token) {
-      console.error(`Token error: ${ request.query.token } !== ${ task.token }`);
+      console.log(`Token error: ${ request.query.token } !== ${ task.token }`);
       return res.end('Token Error!');
     }
   }
   if(!task.command) return res.end('Task Error!');
   exec(task.command, function (err, stdout, stderr){
     if(err) console.error(err);
-    console.log(`stderr: ${ stderr }`);
+    // console.log(`stderr: ${ stderr }`);
     res.end('Done!');
   });
 
