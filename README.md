@@ -32,6 +32,8 @@ config.tasks['updateWeb'] = {
 - `tasks['name']` Git webhook 请求的路径；
 - `command` Git webhook 请求时执行的命令；
 - `token` 请求时需要简单验证的参数；
+- `type` （可选）获取分支的系统类型（gitlab、gogs）；
+- `branch` （可选）针对特定分支执行（master...）；
 
 ### 启动项目
 
