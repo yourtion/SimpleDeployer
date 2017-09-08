@@ -13,5 +13,7 @@ config.tasks['updateWeb'] = {
 config.tasks['updateBlog'] = {
   token: 'xxxxxxx',
   command: 'cd /path/to/blog && git pull && pm2 restart Blog'
+  type: 'gitlab',
+  branch: 'master',
 };
 

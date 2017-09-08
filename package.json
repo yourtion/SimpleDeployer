@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "export NODE_ENV=test && mocha",
-    "dev": "export DEBUG=\"SimpeDeployer:*\" && node index",
+    "dev": "export DEBUG=\"SimpeDeployer:*\" && nodemon index",
     "lint": "eslint . --fix",
     "pm2": "pm2 startOrReload pm2.json"
   },
