@@ -59,18 +59,18 @@ http.createServer((req, res) => {
 
         if (run) {
           execCommand(task.command, (err) => {
-            res.end(err || 'Done!');
+            res.end(err && err.toString() || 'Done!');
           });
         } else {
           res.end('OK!');
         }
       } catch (error) {
-        res.end(error);
+        res.end(error.toString());
       }
     });
   } else {
     execCommand(task.command, (err) => {
-      res.end(err || 'Done!');
+      res.end(err && err.toString() || 'Done!');
     });
   }
 }).listen(port);
