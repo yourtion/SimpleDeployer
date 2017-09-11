@@ -9,14 +9,17 @@ if(process.env.NODE_ENV === 'test') {
 }
 
 const config = require(cfg);
+// eslint-disable-next-line no-console
+const log = config.log ? console.log : () => {};
 const tasks = config.tasks;
 
 const port = config.port || 8300;
+const host = config.host || '127.0.0.1';
 
 function execCommand(command, cb) {
   exec(command, function (err, stdout, stderr){
     if(err) cb(err);
-    // console.log(`stderr: ${ stderr }`);
+    log(`execCommand: ${ stderr }`);
     cb(null);
   });
 }
@@ -33,7 +36,7 @@ http.createServer((req, res) => {
   if(!task) return res.end('Task Error!');
   if(task.token) {
     if(!request.query.token || request.query.token !== task.token) {
-      // console.log(`Token error: ${ request.query.token } !== ${ task.token }`);
+      log(`Token error: ${ request.query.token } !== ${ task.token }`);
       return res.end('Token Error!');
     }
   }
@@ -59,9 +62,11 @@ http.createServer((req, res) => {
 
         if (run) {
           execCommand(task.command, (err) => {
+            log(`${ taskName } - ${ task.type }: Done ${ err }`);
             res.end(err && err.toString() || 'Done!');
           });
         } else {
+          log(`${ taskName } - ${ task.type } Skip`);
           res.end('OK!');
         }
       } catch (error) {
@@ -70,7 +75,11 @@ http.createServer((req, res) => {
     });
   } else {
     execCommand(task.command, (err) => {
+      log(`${ taskName } Run`);
       res.end(err && err.toString() || 'Done!');
     });
   }
-}).listen(port);
+}).listen(port, host, () => {
+  log(`SimpleDeployer is runing at ${ host }:${ port } ! 
+  tasks: ${ Object.keys(tasks) }`);
+});
