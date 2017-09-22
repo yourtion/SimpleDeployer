@@ -16,8 +16,8 @@ const tasks = config.tasks;
 const port = config.port || 8300;
 const host = config.host || '127.0.0.1';
 
-function execCommand(command, cb) {
-  exec(command, function (err, stdout, stderr){
+function execCommand(command, options = {}, cb) {
+  exec(command, options, function (err, stdout, stderr){
     if(err) cb(err);
     log(`execCommand: ${ stderr }`);
     cb(null);
@@ -41,6 +41,8 @@ http.createServer((req, res) => {
     }
   }
   if(!task.command) return res.end('Task Error!');
+  const options = {};
+  if(task.cwd) options.cwd = task.cwd;
 
   if(req.method === 'POST' && task.type && task.branch) {
     const body = [];
@@ -61,7 +63,7 @@ http.createServer((req, res) => {
         }
 
         if (run) {
-          execCommand(task.command, (err) => {
+          execCommand(task.command, options, (err) => {
             log(`${ taskName } - ${ task.type }: Done ${ err }`);
             res.end(err && err.toString() || 'Done!');
           });
@@ -74,7 +76,7 @@ http.createServer((req, res) => {
       }
     });
   } else {
-    execCommand(task.command, (err) => {
+    execCommand(task.command, options, (err) => {
       log(`${ taskName } Run`);
       res.end(err && err.toString() || 'Done!');
     });
