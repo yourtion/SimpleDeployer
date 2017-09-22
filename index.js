@@ -11,6 +11,8 @@ if(process.env.NODE_ENV === 'test') {
 const config = require(cfg);
 // eslint-disable-next-line no-console
 const log = config.log ? console.log : () => {};
+// eslint-disable-next-line no-console
+const debug = config.debug ? console.log : () => {};
 const tasks = config.tasks;
 
 const port = config.port || 8300;
@@ -19,7 +21,7 @@ const host = config.host || '127.0.0.1';
 function execCommand(command, options = {}, cb) {
   exec(command, options, function (err, stdout, stderr){
     if(err) cb(err);
-    log(`execCommand: ${ stderr }`);
+    debug(`execCommand: ${ stderr }`);
     cb(null);
   });
 }
@@ -36,7 +38,7 @@ http.createServer((req, res) => {
   if(!task) return res.end('Task Error!');
   if(task.token) {
     if(!request.query.token || request.query.token !== task.token) {
-      log(`Token error: ${ request.query.token } !== ${ task.token }`);
+      debug(`Token error: ${ request.query.token } !== ${ task.token }`);
       return res.end('Token Error!');
     }
   }
@@ -64,11 +66,11 @@ http.createServer((req, res) => {
 
         if (run) {
           execCommand(task.command, options, (err) => {
-            log(`${ taskName } - ${ task.type }: Done ${ err }`);
+            log(`${ taskName } - ${ json.ref }: Done ${ err }`);
             res.end(err && err.toString() || 'Done!');
           });
         } else {
-          log(`${ taskName } - ${ task.type } Skip`);
+          log(`${ taskName } - ${ json.ref } Skip`);
           res.end('OK!');
         }
       } catch (error) {
