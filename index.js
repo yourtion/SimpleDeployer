@@ -18,8 +18,9 @@ const tasks = config.tasks;
 const port = config.port || 8300;
 const host = config.host || '127.0.0.1';
 
-function execCommand(command, options = {}, cb) {
-  exec(command, options, function (err, stdout, stderr){
+function execCommand(command, options, cb) {
+  const opt = options || {};
+  exec(command, opt, function (err, stdout, stderr){
     if(err) cb(err);
     debug(`execCommand: ${ stderr }`);
     cb(null);
