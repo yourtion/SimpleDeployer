@@ -14,7 +14,8 @@
     "url": "git+https://github.com/yourtion/SimpleDeployer.git"
   },
   "keywords": [
-    "deploy"
+    "deploy",
+    "webhook"
   ],
   "author": "Yourtion Guo <yourtion@gmail.com>",
   "license": "MIT",
