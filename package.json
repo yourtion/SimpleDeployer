@@ -27,7 +27,7 @@
     "eslint": "^6.0.0",
     "eslint-config-guo": "^0.9.0",
     "mocha": "^6.0.0",
-    "request": "^2.82.0",
+    "request": "^2.88.2",
     "should": "^13.1.0"
   }
 }
